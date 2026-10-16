@@ -1,0 +1,82 @@
+/* Original nautical folio: independently drawn islands, rhumb lines and compass. */
+body{background:linear-gradient(160deg,#203b42,#102d35 1200px,#0c242c)}
+#home-view{background:#dec59b url('original-paper.svg') center top/600px 600px repeat;max-width:1160px;padding:76px 52px 94px;outline:1px solid #8d7750;outline-offset:5px;border:1px solid #7c603e;box-shadow:inset 0 0 65px #9f744b55,0 15px 50px #0006}
+#home-view:before{inset:16px 18px auto;height:56px;background:url('original-rule.svg') center/100% 56px no-repeat}
+#home-view:after{inset:auto 18px 13px;height:56px;background:url('original-rule.svg') center/100% 56px no-repeat;transform:rotate(180deg)}
+.hero-wrap{background:url('original-sea-chart.svg') center/cover no-repeat}
+.hero{min-height:620px;grid-template-columns:1fr 1.12fr;gap:22px}
+.hero-copy{position:relative;z-index:1;padding-top:32px}.hero h1{font-size:74px;letter-spacing:.13em;font-weight:500;color:#493621;text-shadow:1px 1px #f4e0b7}.hero h1 span{color:#493621}
+.hero .eyebrow{font-size:8px;letter-spacing:1px}.breadcrumb{font-size:7px;letter-spacing:1px}.hero-description{font-size:13px}.book-subtitle{font-size:17px}
+.hero-visual{height:480px;padding-top:72px;position:relative}
+.hero-visual:before{content:"";position:absolute;width:180px;height:180px;bottom:7px;left:-30px;background:url('original-compass.svg') center/contain no-repeat;opacity:.65;pointer-events:none}
+.plate-index{top:38px;font-size:8px}.seascape-plate{transform:rotate(-3deg);border:1px solid #846b43;padding:8px 8px 23px;background:#e6ce9f;outline:1px solid #a78d60;box-shadow:3px 5px 0 #a78d6066,0 12px 20px #60492c30}
+.landscape-pair.seascape-plate img{height:245px;filter:saturate(.72) sepia(.1)}.portrait-card{bottom:0;right:-3px;width:96px;transform:rotate(4deg);background:#dfc89a;border:1px solid #8c724a}.hero-credit{top:354px!important;font-size:7px;left:8px!important;max-width:90%}.hero-coordinate{bottom:5px;left:145px;gap:10px}.hero-coordinate>span{font-size:16px;letter-spacing:2px}.hero-coordinate p{font-size:9px}
+.site-header{max-width:1160px;background:linear-gradient(#36575b,#1b3b43);border:1px solid #9b9c84;outline-color:#102c31}.site-header nav a,.header-tools .icon-button{background:linear-gradient(#3d6265,#274c53);border-color:#a6aa91}.hero .primary-button,.colophon .primary-button{background:linear-gradient(#486b69,#284c51);border-color:#a6aa91;outline-color:#746044}
+.section-heading .eyebrow{font-size:8px;letter-spacing:1.5px}.section-heading h2{font-size:25px;letter-spacing:1px;font-weight:500}.section-heading>p{font-size:11px}
+.atlas-paper,html[data-theme=night] .atlas-paper{position:relative;background:#e3cca1 url('original-paper.svg') center/600px 600px repeat;border:1px solid #947b50;outline:1px solid #a08659;outline-offset:5px;padding:22px;box-shadow:inset 0 0 40px #ad855033,3px 4px 0 #9a7d5055}
+.atlas-topline{background:transparent;border:0;border-top:3px double #9b7b4c;border-bottom:1px solid #a88d5e;padding:12px 0;font-size:12px}.atlas-topline small{font-size:7px}.atlas-tabs button{background:#b49a6830;border-color:#a89060;font-size:11px}.atlas-tabs button[aria-selected=true]{background:linear-gradient(#4b6b64,#2e504e);color:#f4e3be;border-color:#6b7c68}
+#atlas-graph{position:relative;background:url('original-sea-chart.svg') center/cover no-repeat}.atlas-svg .contour{opacity:.13}.atlas-svg .map-grid{opacity:.13}.atlas-svg .node-halo{fill:#e5cfa4;opacity:.95}.atlas-svg .node-label{paint-order:stroke;stroke:#e5cfa4;stroke-width:5px;stroke-linejoin:round;fill:#493a25}.atlas-svg .node-code{fill:#826443}.atlas-svg .route-line{stroke:#81523c;stroke-width:1.8}.atlas-svg .return-line{stroke:#4d7569;stroke-width:1.6}
+.atlas-bottom>p{font-size:11px;line-height:1.9}.map-legend{font-size:9px}.chapter-cards{border:0;gap:12px}.chapter-card,.chapter-card:first-child,.chapter-card:last-child{border:1px solid #a0865b;background:#e2cba055;box-shadow:inset 0 0 0 4px #e8d4ad,inset 0 0 0 5px #ad926344;min-height:154px;padding:21px}.chapter-card .card-number{font:italic 12px Georgia;color:#815338}.chapter-card h3{font-size:20px}.chapter-card p{font-size:11px}.card-meta{font-size:8px}.contents-section:after{height:45px;background:url('original-rule.svg') center/100% 45px no-repeat;margin-top:24px}
+.gallery-item figcaption{font-size:12px}.gallery-item figcaption small,.gallery-item figcaption a{font-size:9px}.archive-note{font-size:11px}.colophon-mark{background:#ddc397}.colophon-links{font-size:11px}
+#manuscript{background:#efdfbd url('original-paper.svg') center top/800px 800px repeat;background-blend-mode:screen}.chapter-heading:before{content:"";height:30px;background:url('original-rule.svg') center/90% 30px no-repeat}.chapter-heading h2{background:none;border:0;border-top:3px double #9c8053;border-bottom:1px solid #9c8053;padding:20px 0;box-shadow:none}.folio{font-size:9px}.chapter-meta{font-size:10px}
+dialog{background:#ebd7af url('original-paper.svg') center/600px 600px repeat}
+html[data-theme=night] .chapter-heading h2{background:none;border-top:3px double #93a9a588;border-bottom:1px solid #93a9a588}
+@media(max-width:1150px){#home-view{padding-left:30px;padding-right:30px}.hero h1{font-size:64px}.hero-visual{height:445px}.landscape-pair.seascape-plate img{height:220px}.hero-credit{top:333px!important}.hero-visual:before{width:155px;height:155px;left:-15px}.hero-coordinate{left:125px}.hero-coordinate p{font-size:8px}.portrait-card{width:85px}.hero{min-height:580px}}
+@media(max-width:850px){#home-view{padding-left:18px;padding-right:18px}.hero h1{font-size:54px}.hero .eyebrow{font-size:6px}.hero-visual{height:410px}.landscape-pair.seascape-plate img{height:190px}.hero-credit{top:305px!important;font-size:6px}.hero-coordinate{left:100px}.hero-coordinate p{display:none}.hero-visual:before{width:130px;height:130px}.portrait-card{width:77px}.hero{min-height:540px}.section-heading h2{font-size:22px}}
+@media(max-width:650px){#home-view{padding:57px 10px 70px;outline-offset:2px}#home-view:before{inset:10px 10px auto;height:36px;background-size:100% 36px}#home-view:after{inset:auto 10px 10px;height:36px;background-size:100% 36px}.hero{display:block;min-height:0}.hero-copy{padding-top:16px}.hero h1{font-size:64px;letter-spacing:.12em}.hero .eyebrow{font-size:6px;letter-spacing:.6px}.breadcrumb{font-size:5px}.hero-description{font-size:12px}.hero-visual{height:350px;padding:32px 6px 0;margin-top:20px}.plate-index{top:3px;font-size:7px}.landscape-pair.seascape-plate img{height:180px}.hero-credit{top:254px!important;left:8px!important;font-size:5.5px;max-width:90%}.hero-visual:before{width:122px;height:122px;bottom:-3px;left:-7px}.hero-coordinate{bottom:9px;left:110px}.hero-coordinate p{display:block;font-size:8px}.hero-coordinate>span{font-size:13px}.portrait-card{width:76px;bottom:4px;right:0}.portrait-card img{height:88px}.atlas-paper,html[data-theme=night] .atlas-paper{padding:13px 10px;outline-offset:2px}.atlas-tabs button{font-size:10px;padding:8px 6px}.atlas-topline{font-size:10px;gap:8px}.atlas-topline small{font-size:5px}.atlas-bottom>p{font-size:10px}.map-legend{font-size:8px}.section-heading h2{font-size:21px}.section-heading>p{font-size:11px}.chapter-cards{gap:9px}.chapter-card,.chapter-card:first-child,.chapter-card:last-child{padding:17px 13px 25px;min-height:148px}.chapter-card h3{font-size:17px}.chapter-card p{font-size:9px}.gallery-item figcaption{font-size:10px}.gallery-item figcaption small{font-size:7px}.archive-note{font-size:10px}.colophon-links{font-size:10px}.chapter-heading h2{padding:15px 0}.folio{font-size:7px}.chapter-meta{font-size:9px}}
+@media(max-width:380px){.hero h1{font-size:56px}.hero-visual{height:320px}.landscape-pair.seascape-plate img{height:150px}.hero-credit{top:223px!important;font-size:5px}.hero-coordinate{left:100px;gap:7px}.hero-coordinate p{display:none}.hero-visual:before{width:112px;height:112px}.section-heading h2{font-size:19px}.atlas-tabs button{font-size:9px;padding:7px 4px}.chapter-card h3{font-size:16px}}
+@media print{#manuscript{background:white!important}.chapter-heading:before{display:none}.chapter-heading h2{border:0}}
+
+/* Quiet, flat paper. No radial lighting, large circular stains or repeated wash. */
+#home-view{box-shadow:inset 7px 0 13px #8d6c3e18,inset -6px 0 11px #8d6c3e12,0 15px 50px #0005}
+.hero-wrap{background-position:23% 38%;background-size:117% auto}
+.sea-atmosphere,.dusk-horizon{display:none}
+.colophon{background:none}
+.is-reading{background:linear-gradient(100deg,#102d35,#19363c 65%,#122e34)}
+html[data-theme=night] body{background:linear-gradient(160deg,#142e38,#0b202a)}
+.atlas-paper,html[data-theme=night] .atlas-paper{box-shadow:inset 3px 0 8px #8b6c3f12,3px 4px 0 #9a7d5044}
+@media(max-width:650px){.hero-wrap{background-size:auto 95%;background-position:29% center}}
+/* Low sunset falls obliquely across the folio; no radial spotlights. */
+body{background:linear-gradient(155deg,#72594d 0,#3c5051 190px,#183940 650px,#102d35 1400px,#0c242c)}
+#home-view{background-image:linear-gradient(146deg,#f6c38b00 4%,#f2b06c1c 20%,#f9cc8d3d 32%,#edab6320 45%,#dfc99f00 65%),url('original-paper.svg');background-size:100% 1100px,600px 600px;background-repeat:no-repeat,repeat}
+.hero-wrap{position:relative}
+.hero-wrap:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:linear-gradient(148deg,transparent 28%,#ffda9c28 41%,#ffdba712 54%,transparent 66%)}
+.hero-visual{z-index:1}
+.seascape-plate{border-top-color:#c8a16a;border-right-color:#c8a16a;box-shadow:inset -1px 1px 0 #ffe0a888,3px 5px 0 #a78d6055,0 12px 20px #60492c30}
+html[data-theme=night] body{background:linear-gradient(155deg,#5b4a45 0,#273f46 240px,#102d35 750px,#0b202a 1400px)}
+@media print{#home-view,.hero-wrap:before{background:none!important}}
+/* Preserve the supplied portrait crop on chapter one instead of forcing a landscape frame. */
+.chapter-image.portrait-insert{max-width:328px}
+.gallery-item img{object-fit:contain;object-position:center;background:transparent}
+.portrait-card img{height:auto;aspect-ratio:151/269;object-fit:contain;object-position:center}
+.chapter-image.portrait-insert img{width:auto;height:auto;max-width:100%;max-height:470px;margin:0 auto;object-fit:contain}
+@media(max-width:650px){.chapter-image.portrait-insert img{max-height:275px}}
+/* Visible sunset: amber light enters from the upper right in broad oblique bands. */
+body{background:linear-gradient(220deg,#b57b58 0,#8c6554 140px,#5b5f59 350px,#24434a 690px,#102d35 1300px,#0c242c)}
+.site-header{background:linear-gradient(110deg,#24444d 35%,#4c625e 74%,#a38460 100%);border-right-color:#d7bb87}
+#home-view{background-image:linear-gradient(212deg,#d98e497a 0%,#ffc36f94 10%,#ffdda567 24%,#f7c77926 42%,transparent 62%),url('original-paper.svg');background-size:100% 1150px,600px 600px;background-repeat:no-repeat,repeat;border-top-color:#e8c58c;border-right-color:#d9b579;box-shadow:inset -3px 2px 0 #ffe3a877,inset 8px 0 14px #72583818,0 15px 50px #0005}
+.hero-wrap:before{inset:-40px -27px -20px;z-index:0;background:linear-gradient(137deg,transparent 0 31%,#ffe8ab00 32%,#fff1c263 35%,#ffdb946e 40%,#ffc46e44 49%,transparent 61%);pointer-events:none}
+.hero-copy{isolation:isolate}
+.seascape-plate{background:linear-gradient(140deg,#e9cf9e,#ffe0a0 52%,#c6995e);border-top-color:#efc47a;border-right-color:#e8b86b;box-shadow:inset -2px 2px 0 #ffe7ad,3px 8px 0 #8e6c3c66,-9px 16px 23px #63482c33}
+.portrait-card{border-top-color:#edcd8e;border-right-color:#d9b579;box-shadow:inset -1px 1px 0 #ffe5b0,-4px 7px 12px #74503333}
+html[data-theme=night] body{background:linear-gradient(220deg,#86614f 0,#4c504c 260px,#1e3942 650px,#0b202a 1350px)}
+@media(max-width:650px){#home-view{background-size:100% 1200px,600px 600px}.hero-wrap:before{inset:-20px -12px -15px;background:linear-gradient(145deg,transparent 0 22%,#fff0b85c 27%,#ffd68561 35%,#efac5433 45%,transparent 60%)}.site-header{background:linear-gradient(110deg,#24444d 25%,#50665f 75%,#947a57)}}
+.hero-wrap:before{mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 68%,transparent 97%);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 68%,transparent 97%)}
+/* The reading pages share the sunset palette, including their navigation windows. */
+html:not([data-theme=night]){--paper:#e5cda3;--sheet:#ead6ae;--ink:#3d3024;--muted:#745d40;--line:#a88b5a;--accent:#855036}
+.is-reading{background:linear-gradient(220deg,#936c50 0,#4b5950 280px,#25454a 650px,#112e36 1200px);background-attachment:fixed}
+#manuscript{background-color:#e5cda3;background-image:linear-gradient(212deg,#e9b56785 0,#ffdda15c 20%,transparent 58%),linear-gradient(#f7e3bf42,#f7e3bf42),url('original-paper.svg');background-size:100% 1050px,auto,800px 800px;background-repeat:no-repeat,repeat,repeat;background-blend-mode:normal;border-color:#94744b;outline-color:#c6a36d;box-shadow:-4px 0 0 #725d3e66,4px 0 0 #d1b48088,-12px 12px 30px #11252744}
+.manuscript-content p,.reading-appendix{color:#3d3024}.manuscript-content h3,.manuscript-content h4{color:#62452b}.note-ref{color:#8b4b2f}
+.chapter-heading{background:linear-gradient(215deg,#f8cb7c36,transparent 64%);margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}.chapter-heading h2{color:#4b3420;border-color:#a4814b}.folio,.chapter-meta{color:#7d623d}
+.reader-toc{background:linear-gradient(130deg,#425e5a,#213f44 72%,#18343d);border-color:#aaa98b;box-shadow:inset 1px 1px #ddc79766,inset -1px -1px #0c292e,2px 3px 0 #0004}
+.reading-toolbar{background:linear-gradient(110deg,#25464d 30%,#566b5e 80%,#9d835b);border-color:#aba98b;color:#ece1bd}.reading-toolbar a,.reading-toolbar .text-button{color:#f0e1bb}
+.toc-chapter.active{background:#d7ba7530;border-color:#c8b686}.toc-chapter.active>a{color:#ffe5a3}.reader-margin{--ink:#ead6ad;--muted:#c1bf9d;--accent:#efc886}.reader-margin .aside-label{color:#c7bd97}
+#manuscript .chapter-image figcaption,#manuscript .chapter-image figcaption a{color:#745b36}
+html[data-theme=night] .is-reading{background:linear-gradient(220deg,#715644 0,#344a47 320px,#18353c 720px,#0e252e 1300px);background-attachment:fixed}
+html[data-theme=night] #manuscript{background:linear-gradient(120deg,#254447,#1b353a 70%,#183036);border-color:#a8a281;box-shadow:inset -2px 1px #c6ad7355,-4px 0 0 #6b796b66,4px 0 0 #6b796b66,-12px 12px 30px #11252744}
+html[data-theme=night] .chapter-heading{background:linear-gradient(215deg,#c4a1651c,transparent 64%)}
+html[data-theme=night] .chapter-heading h2{color:#ecdcba;border-color:#a3936c}
+html[data-theme=night] .manuscript-content p,html[data-theme=night] .reading-appendix{color:#e7ddc6}
+html[data-theme=night] #manuscript .chapter-image figcaption,html[data-theme=night] #manuscript .chapter-image figcaption a{color:#c6c3a7}
+@media(max-width:650px){.reader-toc{background:linear-gradient(130deg,#425e5a,#213f44 72%,#18343d)}.chapter-heading{margin-left:0;margin-right:0;padding-left:0;padding-right:0}.reading-toolbar{background:linear-gradient(110deg,#25464d,#68745e 85%,#9d835b)}}
+@media print{.is-reading,html[data-theme=night] .is-reading,#manuscript,html[data-theme=night] #manuscript,.chapter-heading{background:white!important}.manuscript-content p,.reading-appendix{color:black!important}}
