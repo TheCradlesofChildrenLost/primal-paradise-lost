@@ -80,3 +80,31 @@ html[data-theme=night] .manuscript-content p,html[data-theme=night] .reading-app
 html[data-theme=night] #manuscript .chapter-image figcaption,html[data-theme=night] #manuscript .chapter-image figcaption a{color:#c6c3a7}
 @media(max-width:650px){.reader-toc{background:linear-gradient(130deg,#425e5a,#213f44 72%,#18343d)}.chapter-heading{margin-left:0;margin-right:0;padding-left:0;padding-right:0}.reading-toolbar{background:linear-gradient(110deg,#25464d,#68745e 85%,#9d835b)}}
 @media print{.is-reading,html[data-theme=night] .is-reading,#manuscript,html[data-theme=night] #manuscript,.chapter-heading{background:white!important}.manuscript-content p,.reading-appendix{color:black!important}}
+/* Keep the close mark centered independently of font metrics and button padding. */
+.dialog-top .icon-button.close-dialog {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 0;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.dialog-top .close-dialog::before,
+.dialog-top .close-dialog::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 1.5px;
+  background: currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.dialog-top .close-dialog::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
