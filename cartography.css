@@ -108,3 +108,11 @@ html[data-theme=night] #manuscript .chapter-image figcaption,html[data-theme=nig
 .dialog-top .close-dialog::after {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
+/* Supplied scenes and artwork remain complete at every reading width. */
+.chapter-image.supplied-image .image-button{display:block;width:100%}
+.chapter-image.supplied-image img{display:block;width:100%;height:auto;max-height:580px;object-fit:contain;filter:none}
+.chapter-image.supplied-image.portrait-insert{max-width:440px}
+.chapter-image.supplied-image.portrait-insert img{max-height:570px}
+.landscape-pair.seascape-plate img{object-fit:contain;filter:none}
+.gallery-item .image-kind{display:block;font-size:10px;line-height:1.6;color:var(--muted);margin-top:4px}
+@media(max-width:650px){.chapter-image.supplied-image.portrait-insert img{max-height:430px}.chapter-image.supplied-image figcaption{display:block;line-height:1.9}.chapter-image.supplied-image figcaption a{display:block}}
