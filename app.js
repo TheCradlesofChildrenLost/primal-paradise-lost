@@ -18,7 +18,7 @@ const paths={
  'chapter-03':[['起初的两块石头','chapter-00-2'],['胸石不在了','chapter-07-3']],
  'chapter-04':[['愿望的回声','chapter-05-2'],['把愿望说出来','chapter-07-1']],
  'chapter-05':[['乌尔米娅的请求','chapter-01-3'],['沉默的同伴','chapter-07-2']],
- 'chapter-06':[['器物与封存','chapter-03-2'],['世界留下来以后','chapter-08']],
+ 'chapter-06':[['器物与封存','chapter-03-2'],['世界保留下来以后','chapter-08']],
  'chapter-07':[['回看门前的终结','chapter-05-2'],['返回日常的关系','chapter-01-3']],
  'chapter-08':[['回到第一块石头','chapter-00-2'],['听见道谢','chapter-07-4']]};
 function setCurrent(id){if(!id.startsWith('chapter-'))return;const ch=D.chapters.find(c=>c.id===id);if(!ch)return;current=id;if(reading)visited.add(id);$$('[data-toc]').forEach(e=>{const active=e.dataset.toc===id;e.classList.toggle('active',active);e.querySelector('a').setAttribute('aria-current',active?'location':'false')});$('#current-chapter-label').textContent=ch.short;$('#return-paths').innerHTML=paths[id].map(([label,target],i)=>`<a class="path-link" href="#${target}">${E(label)} <span>↗</span><small>RETURN ${String(i+1).padStart(2,'0')}</small></a>`).join('')}
