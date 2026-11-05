@@ -7,7 +7,7 @@ function persist(){try{localStorage.setItem(storeKey,JSON.stringify({...state,fo
 function applyFont(){document.documentElement.style.setProperty('--read-size',font+'px');$('#font-output').textContent=font+' px';$('#font-minus').disabled=font<=17;$('#font-plus').disabled=font>=28}
 function applyTheme(t){document.documentElement.dataset.theme=t;$$('#settings-dialog [data-theme]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.theme===t)))}
 applyFont();applyTheme(state.theme==='night'?'night':'paper');
-$('#edition-line').innerHTML=`序章 · 七章 · 结语 <span>／</span> ${Math.round(D.han/1000)} 千字 · ${D.noteCount} 条注释`;
+$('#edition-line').innerHTML=`序章 · 七章 · 终章 <span>／</span> ${Math.round(D.han/1000)} 千字 · ${D.noteCount} 条注释`;
 $('#chapter-cards').innerHTML=D.chapters.map((c,i)=>`<a class="chapter-card" href="#${c.id}"><span class="card-number">${String(i).padStart(2,'0')} <i>↗</i></span><h3>${E(c.short)}</h3><p>${E(c.region)}</p><span class="card-meta">${c.minutes} MIN</span></a>`).join('');
 $('#reader-navigation').innerHTML=D.chapters.map(c=>`<div class="toc-chapter" data-toc="${c.id}"><a href="#${c.id}"><small>${String(c.number).padStart(2,'0')}</small><span>${E(c.short)}</span></a><div class="toc-section-links">${c.sections.filter(x=>x.level===2).map(s=>`<a href="#${s.id}">${E(s.title)}</a>`).join('')}</div></div>`).join('');
 $('#gallery-grid').innerHTML=D.gallery.map((im,i)=>`<figure class="gallery-item"><button class="image-button" data-image="${E(im.file)}" data-caption="${E(im.title)}" data-source="${E(im.source_page)}" data-source-label="${E(im.source_label)}" aria-label="放大：${E(im.title)}"><img src="${E(im.file)}" alt="${E(im.alt)}" loading="lazy" width="${im.width}" height="${im.height}"></button><figcaption><span>${E(im.title)}${im.provenance==='user-supplied'?`<small class="image-kind">${E(im.source_label)}</small>`:''}</span><a href="${E(im.source_page)}" target="_blank" rel="noopener noreferrer" aria-label="${E(im.title)}图片出处"><small>FIG. ${String(i+1).padStart(2,'0')} ↗</small></a></figcaption></figure>`).join('');
@@ -26,12 +26,12 @@ function setView(read){reading=read;$('#reader-view').hidden=!read;$('#home-view
 function navigate(id,restore=false){
  document.body.classList.remove('toc-open');
  const home=['home','atlas','contents','archive'].includes(id)||!id;setView(!home);
- if(home){if(id==='home'||!id)window.scrollTo({top:0,behavior:'instant'});else document.getElementById(id)?.scrollIntoView({behavior:'instant',block:'start'});document.title='原初的失乐园 · 拓扑阅读图册';drawMap();return}
+ if(home){if(id==='home'||!id)window.scrollTo({top:0,behavior:'instant'});else document.getElementById(id)?.scrollIntoView({behavior:'instant',block:'start'});document.title='原初的失乐园';drawMap();return}
  const target=document.getElementById(id);
  if(!target){setView(false);window.scrollTo({top:0,behavior:'instant'});return}
- const ch=target.closest('[data-chapter]');if(ch)setCurrent(ch.dataset.chapter);else{const appendix=target.closest('.reading-appendix');if(appendix)$('#current-chapter-label').textContent=({notes:'完整注释',bibliography:'参考文献',materials:'材料与版本说明'})[appendix.id]||'注释与书目'}
+ const ch=target.closest('[data-chapter]');if(ch)setCurrent(ch.dataset.chapter);else{const appendix=target.closest('.reading-appendix');if(appendix)$('#current-chapter-label').textContent=({abstract:'摘要',notes:'完整注释',bibliography:'参考文献',materials:'材料与版本说明'})[appendix.id]||'注释与书目'}
  target.scrollIntoView({behavior:'instant',block:'start'});if(id==='manuscript')target.focus({preventScroll:true});
- document.title=(D.chapters.find(c=>c.id===current)?.short||'注释与书目')+' · 原初的失乐园';
+ document.title=(ch?(D.chapters.find(c=>c.id===current)?.short||'正文'):$('#current-chapter-label').textContent)+' · 原初的失乐园';
  if(restore&&state.bookmark?.id===id){const y=target.getBoundingClientRect().top+window.scrollY+(state.bookmark.offset||0);window.scrollTo({top:Math.max(0,y),behavior:'instant'})}
 }
 function go(id){if(location.hash==='#'+id)navigate(id);else location.hash=id}
@@ -66,5 +66,5 @@ $('#bookmark-button').addEventListener('click',()=>remember(true));$('#resume-bu
 $('#resume-button').addEventListener('click',()=>{if(!state.bookmark)return;const id=state.bookmark.id;if(location.hash==='#'+id)navigate(id,true);else{history.pushState(null,'','#'+id);navigate(id,true)}});
 window.addEventListener('scroll',()=>{if(!reading)return;const available=document.documentElement.scrollHeight-window.innerHeight;$('.page-progress i').style.width=(available?Math.min(100,window.scrollY/available*100):0)+'%';clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>remember(),400);const chapters=$$('.reading-chapter');const active=chapters.findLast?chapters.findLast(c=>c.getBoundingClientRect().top<160):[...chapters].reverse().find(c=>c.getBoundingClientRect().top<160);if(active&&active.dataset.chapter!==current)setCurrent(active.dataset.chapter)},{passive:true});
 window.addEventListener('pagehide',()=>remember());$('#back-top').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));window.addEventListener('hashchange',()=>navigate(decodeURIComponent(location.hash.slice(1))));window.addEventListener('popstate',()=>navigate(decodeURIComponent(location.hash.slice(1))));
-drawMap();navigate(decodeURIComponent(location.hash.slice(1)));setCurrent(current);
+drawMap();setCurrent(current);navigate(decodeURIComponent(location.hash.slice(1)));
 })();
