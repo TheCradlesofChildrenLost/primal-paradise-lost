@@ -341,41 +341,6 @@
       "author": "本项目原创设计",
       "description": "独立绘制的装饰海岸、罗盘、纸纹或绳结边饰，不表示游戏实际地理",
       "sha256": "a84490bb1e9269aec968fe7d8d6b90fff01da7e25254d66f9a819d449ff8bb78"
-    },
-    {
-      "file": "manuscript-vellum.svg",
-      "kind": "original interface SVG",
-      "author": "本项目原创设计",
-      "description": "原创羊皮纸细纤维纹理，无圆形明暗斑",
-      "sha256": "356d44b5bdde8476492b3ecd9b9d623c5e37fc19c7fd45557197c285ff6059e4"
-    },
-    {
-      "file": "renaissance-portal.svg",
-      "kind": "original interface SVG",
-      "author": "本项目原创设计",
-      "description": "原创古典半圆拱、分离柱式与缺口石件的木刻式画框",
-      "sha256": "515f264f5cb983f1f149bea3d31b9652e669c5b58ac82d416afd0ba737af93b8"
-    },
-    {
-      "file": "renaissance-vignette.svg",
-      "kind": "original interface SVG",
-      "author": "本项目原创设计",
-      "description": "原创石头、敞口容器、海浪与废墟的并置版画页饰",
-      "sha256": "747da71d74912a8397807aeeed7b33d7991a4d118a7ff0d73d95d7aac51b56d3"
-    },
-    {
-      "file": "renaissance-sea-rule.svg",
-      "kind": "original interface SVG",
-      "author": "本项目原创设计",
-      "description": "原创留有间隙的海浪刻线与石块分隔饰",
-      "sha256": "fdf9c45337e65d853a20e18ce60bcb5e453220322c2a57bf5cf8ad8cf84281ba"
-    },
-    {
-      "file": "renaissance-flourish.svg",
-      "kind": "original interface SVG",
-      "author": "本项目原创设计",
-      "description": "原创人文主义印本式细线花饰",
-      "sha256": "a97866419c7816ba00e6074693ac651d5e8a4030124f7c1ba816823d1899bb98"
     }
   ]
 }
