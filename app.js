@@ -1,5 +1,7 @@
 /* Complete text is rendered at build time; reading preferences stay on this device. */
 (()=>{'use strict';
+// Hash routes and paragraph bookmarks own scroll restoration, including back/forward.
+if('scrollRestoration' in history)history.scrollRestoration='manual';
 const D=window.READER_DATA, $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const E=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const storeKey='cop-reader:v2', appendixLabels={abstract:'摘要',materials:'材料与版本说明',notes:'完整注释',bibliography:'参考文献'};

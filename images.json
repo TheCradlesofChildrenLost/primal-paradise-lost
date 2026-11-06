@@ -341,6 +341,41 @@
       "author": "本项目原创设计",
       "description": "独立绘制的装饰海岸、罗盘、纸纹或绳结边饰，不表示游戏实际地理",
       "sha256": "a84490bb1e9269aec968fe7d8d6b90fff01da7e25254d66f9a819d449ff8bb78"
+    },
+    {
+      "file": "manuscript-vellum.svg",
+      "kind": "original interface SVG",
+      "author": "本项目原创设计",
+      "description": "原创羊皮纸细纤维纹理，无圆形明暗斑",
+      "sha256": "356d44b5bdde8476492b3ecd9b9d623c5e37fc19c7fd45557197c285ff6059e4"
+    },
+    {
+      "file": "trecento-gold.svg",
+      "kind": "original interface SVG",
+      "author": "本项目原创设计",
+      "description": "原创细碎金箔压痕纹理，取意十四世纪意大利金地装帧",
+      "sha256": "55e0af9be05ae5661f03ee374e760da5b66fbc0dc36f17629748d84bc2da7546"
+    },
+    {
+      "file": "trecento-arch.svg",
+      "kind": "original interface SVG",
+      "author": "本项目原创设计",
+      "description": "原创尖拱、三叶饰与金地画框，作为十四世纪意大利绘画的当代界面转译",
+      "sha256": "a792a93e0197b91c4b77a6d3d99419e03ff5a5df94600bc7c9ab2fa24c3b1778"
+    },
+    {
+      "file": "trecento-border.svg",
+      "kind": "original interface SVG",
+      "author": "本项目原创设计",
+      "description": "原创朱砂、青金石蓝与金色几何镶嵌边带",
+      "sha256": "aa58396e570f898ed7f038c40d6366e050e8da2083ad3a3d0990f16594157dd0"
+    },
+    {
+      "file": "trecento-sea-rule.svg",
+      "kind": "original interface SVG",
+      "author": "本项目原创设计",
+      "description": "原创羊皮海图式墨绘海浪与地中海桨帆船边饰",
+      "sha256": "7dc0b4426f4b3594c1a037b5a4b34727c57febd06a8cd061feb0a2706726c3e5"
     }
   ]
 }
