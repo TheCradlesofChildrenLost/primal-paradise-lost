@@ -212,9 +212,13 @@
   if (focusBtn) {
     focusBtn.addEventListener("click", () => {
       const isFocus = document.body.getAttribute("data-focus") === "true";
-      document.body.setAttribute("data-focus", isFocus ? "false" : "true");
-      focusBtn.setAttribute("aria-pressed", isFocus ? "false" : "true");
-      focusBtn.textContent = isFocus ? "专注阅读" : "恢复拓扑场域";
+      const nextFocus = !isFocus;
+      document.body.setAttribute("data-focus", nextFocus ? "true" : "false");
+      focusBtn.setAttribute("aria-pressed", nextFocus ? "true" : "false");
+      const deskLabel = focusBtn.querySelector(".label-desktop");
+      const mobLabel = focusBtn.querySelector(".label-mobile");
+      if (deskLabel) deskLabel.textContent = nextFocus ? "恢复拓扑场域" : "专注阅读";
+      if (mobLabel) mobLabel.textContent = nextFocus ? "场域" : "专注";
     });
   }
 
