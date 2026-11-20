@@ -399,7 +399,6 @@ strong {
    ========================================================================== */
 .layout {
   position: relative;
-  z-index: 5;
   display: grid;
   grid-template-columns: 286px minmax(0, 1fr);
   max-width: 1240px;
@@ -586,6 +585,8 @@ strong {
    右侧正文阅读容器（行宽严格控制在 36-40 汉字，留白舒朗）
    ========================================================================== */
 .content-wrap {
+  position: relative;
+  z-index: 2;
   padding: 36px 56px 110px;
   max-width: 840px;
   margin: 0 auto;
@@ -1233,10 +1234,13 @@ strong {
     bottom: 0;
     width: min(84vw, 310px);
     height: 100dvh;
-    z-index: 60;
+    z-index: 65;
     transform: translateX(-105%);
     transition: transform 0.28s ease;
     box-shadow: 8px 0 28px rgba(0, 0, 0, 0.35);
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+    backdrop-filter: blur(12px);
   }
   .topo-rail.open {
     transform: translateX(0);
@@ -1637,10 +1641,10 @@ body[data-zone="stone"] .figure-card:hover {
     top: 0;
     height: 100dvh;
     width: min(84vw, 310px);
-    z-index: 60;
+    z-index: 65;
     -webkit-overflow-scrolling: touch;
-    padding-top: calc(16px + env(safe-area-inset-top));
-    padding-bottom: calc(28px + env(safe-area-inset-bottom));
+    padding-top: calc(16px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   }
 }
 
