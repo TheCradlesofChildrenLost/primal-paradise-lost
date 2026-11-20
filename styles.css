@@ -1217,18 +1217,23 @@ strong {
    ========================================================================== */
 @media (max-width: 960px) {
   .layout {
-    grid-template-columns: 1fr;
+    display: block;
+    width: 100%;
+    max-width: 100%;
   }
   .rail-toggle-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .topo-rail {
     position: fixed;
-    top: 54px;
+    top: 0;
     left: 0;
     bottom: 0;
-    width: 290px;
-    z-index: 45;
+    width: min(84vw, 310px);
+    height: 100dvh;
+    z-index: 60;
     transform: translateX(-105%);
     transition: transform 0.28s ease;
     box-shadow: 8px 0 28px rgba(0, 0, 0, 0.35);
@@ -1237,13 +1242,16 @@ strong {
     transform: translateX(0);
   }
   .content-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     padding: 26px 20px 80px;
   }
   .ost-pill {
     display: none;
   }
   .figure-grid-2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1638,10 +1646,12 @@ body[data-zone="stone"] .figure-card:hover {
 
 @media (max-width: 720px) {
   :root {
-    --topbar-h: calc(50px + env(safe-area-inset-top));
+    --topbar-h: calc(50px + env(safe-area-inset-top, 0px));
   }
 
   html, body {
+    width: 100%;
+    max-width: 100%;
     overflow-x: clip;
   }
 
@@ -1653,23 +1663,38 @@ body[data-zone="stone"] .figure-card:hover {
   }
 
   .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     height: var(--topbar-h);
-    padding: env(safe-area-inset-top) 10px 0;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: env(safe-area-inset-top, 0px) 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+  .topbar-left {
+    display: flex;
     align-items: center;
     gap: 8px;
-    width: 100%;
-    max-width: 100vw;
+    flex: 1 1 0%;
+    min-width: 0;
+    overflow: hidden;
   }
-  .topbar-left,
   .topbar-right {
-    display: contents;
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 6px;
   }
   .rail-toggle-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
     height: 34px;
     padding: 0 10px;
     font-size: 0.78rem;
@@ -1680,8 +1705,8 @@ body[data-zone="stone"] .figure-card:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1 1 0%;
     min-width: 0;
-    width: 100%;
     overflow: hidden;
     padding: 0 4px;
     border: none;
@@ -1691,6 +1716,7 @@ body[data-zone="stone"] .figure-card:hover {
   #topbar-zone-label {
     display: block;
     min-width: 0;
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1708,6 +1734,7 @@ body[data-zone="stone"] .figure-card:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
     height: 34px;
     padding: 0 10px;
     font-size: 0.76rem;
@@ -1859,6 +1886,8 @@ body[data-zone="stone"] .figure-card:hover {
     line-height: 1.55;
   }
   .svg-plate {
+    width: 100%;
+    max-width: 100%;
     padding: 14px 12px 12px;
     margin: 24px 0;
     overflow-x: auto;
