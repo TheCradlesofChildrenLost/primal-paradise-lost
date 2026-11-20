@@ -1102,8 +1102,11 @@ strong {
    ========================================================================== */
 .lightbox {
   position: fixed;
-  inset: 0;
-  z-index: 80;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1100;
   background: rgba(10, 12, 16, 0.94);
   backdrop-filter: blur(8px);
   display: none;
@@ -1217,33 +1220,99 @@ strong {
    响应式适配
    ========================================================================== */
 @media (max-width: 960px) {
+  #ambient-canvas {
+    display: none !important;
+  }
   .layout {
     display: block;
     width: 100%;
     max-width: 100%;
+  }
+  .topbar {
+    background: var(--bg-page);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   .rail-toggle-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
+  .rail-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    padding: 4px 12px;
+  }
+  .rail-year {
+    display: none;
+  }
   .topo-rail {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    width: min(84vw, 310px);
-    height: 100dvh;
-    z-index: 65;
-    transform: translateX(-105%);
-    transition: transform 0.28s ease;
-    box-shadow: 8px 0 28px rgba(0, 0, 0, 0.35);
+    width: 82vw;
+    max-width: 310px;
+    height: auto;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-elevated);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-right: 1px solid var(--border-color);
+    padding: 0 16px 32px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
-    touch-action: pan-y;
-    backdrop-filter: blur(12px);
+    transform: translate3d(-105%, 0, 0);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.25s ease, visibility 0.25s ease;
+    box-shadow: 8px 0 28px rgba(0, 0, 0, 0.35);
   }
   .topo-rail.open {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .topo-rail-header {
+    order: 0;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: var(--bg-elevated);
+    margin: 0 -16px 12px;
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .toc-nav {
+    order: 1;
+    margin-bottom: 14px;
+  }
+  .toc-link {
+    padding: 10px 10px;
+    min-height: 42px;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  .rail-atlas-btn {
+    order: 2;
+    margin-top: 0;
+    margin-bottom: 16px;
+    min-height: 42px;
+    font-size: 0.86rem;
+  }
+  .mothercrystals-bar {
+    order: 3;
+    padding: 10px 4px 14px;
+  }
+  .lewin-widget {
+    order: 4;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   .content-wrap {
     width: 100%;
@@ -1601,17 +1670,21 @@ body[data-zone="stone"] .figure-card:hover {
 .rail-backdrop {
   display: none;
   position: fixed;
-  inset: 0;
-  z-index: 59;
-  background: rgba(8, 11, 16, 0.58);
-  backdrop-filter: blur(2px);
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 998;
+  background: rgba(8, 11, 16, 0.56);
+  touch-action: none;
 }
 
 .rail-backdrop.open {
   display: block;
-  opacity: 1;
+}
+
+body.drawer-open {
+  overflow: hidden;
 }
 
 .rail-close-btn {
@@ -1627,38 +1700,9 @@ body[data-zone="stone"] .figure-card:hover {
 }
 
 /* ==========================================================================
-   移动端与小屏深度响应式适配（平板 <= 960px / 手机 <= 720px）
+   手机端精细适配（<= 720px：高兼容标准 Flexbox，无 dvh / calc-env 变量）
    ========================================================================== */
-@media (max-width: 960px) {
-  .rail-close-btn {
-    display: inline-flex;
-    align-items: center;
-  }
-  .rail-year {
-    display: none;
-  }
-  .topo-rail {
-    top: 0;
-    height: 100dvh;
-    width: min(84vw, 310px);
-    z-index: 65;
-    -webkit-overflow-scrolling: touch;
-    padding-top: calc(16px + env(safe-area-inset-top, 0px));
-    padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
-  }
-}
-
 @media (max-width: 720px) {
-  :root {
-    --topbar-h: calc(50px + env(safe-area-inset-top, 0px));
-  }
-
-  html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: clip;
-  }
-
   .label-desktop {
     display: none;
   }
@@ -1672,19 +1716,22 @@ body[data-zone="stone"] .figure-card:hover {
     left: 0;
     right: 0;
     width: 100%;
-    height: var(--topbar-h);
-    padding: env(safe-area-inset-top, 0px) 10px 0;
+    height: 52px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
     box-sizing: border-box;
+    background: var(--bg-page);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   .topbar-left {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex: 1 1 0%;
+    flex: 1 1 auto;
     min-width: 0;
     overflow: hidden;
   }
@@ -1701,7 +1748,7 @@ body[data-zone="stone"] .figure-card:hover {
     flex: 0 0 auto;
     height: 34px;
     padding: 0 10px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     white-space: nowrap;
     border-radius: 4px;
   }
@@ -1709,7 +1756,7 @@ body[data-zone="stone"] .figure-card:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1 1 0%;
+    flex: 1 1 auto;
     min-width: 0;
     overflow: hidden;
     padding: 0 4px;
@@ -1724,7 +1771,7 @@ body[data-zone="stone"] .figure-card:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 600;
     color: var(--text-heading);
     text-align: center;
@@ -1741,16 +1788,16 @@ body[data-zone="stone"] .figure-card:hover {
     flex: 0 0 auto;
     height: 34px;
     padding: 0 10px;
-    font-size: 0.76rem;
+    font-size: 0.8rem;
     white-space: nowrap;
     border-radius: 4px;
   }
 
   .crystal-progress-track {
-    top: var(--topbar-h);
+    top: 52px;
   }
   .layout {
-    padding-top: calc(var(--topbar-h) + 3px);
+    padding-top: 55px;
   }
 
   .content-wrap {
@@ -1985,6 +2032,7 @@ body[data-zone="stone"] .figure-card:hover {
     padding: 10px 4px;
   }
   .lb-stage img {
+    max-height: 54vh;
     max-height: 54dvh;
   }
   .lb-nav-btn {
@@ -1997,6 +2045,7 @@ body[data-zone="stone"] .figure-card:hover {
   .lb-nav-btn.prev { left: 4px; }
   .lb-nav-btn.next { right: 4px; }
   .lb-footer {
+    max-height: 22vh;
     max-height: 22dvh;
     overflow-y: auto;
     font-size: 0.78rem;

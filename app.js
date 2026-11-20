@@ -236,36 +236,58 @@
     if (!railEl) return;
     railEl.classList.toggle("open", open);
     if (railBackdrop) railBackdrop.classList.toggle("open", open);
+    if (railToggle) railToggle.setAttribute("aria-expanded", open ? "true" : "false");
     if (window.innerWidth <= 960) {
-      document.body.style.overflow = open ? "hidden" : "";
+      document.body.classList.toggle("drawer-open", open);
+    } else {
+      document.body.classList.remove("drawer-open");
     }
   }
 
+  function jumpToTarget(targetId) {
+    const el = targetId && document.getElementById(targetId);
+    setRailOpen(false);
+    if (!el) return;
+    requestAnimationFrame(() => {
+      const topOffset = window.innerWidth <= 720 ? 62 : 70;
+      const y = el.getBoundingClientRect().top + window.scrollY - topOffset;
+      window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+    });
+  }
+
   if (railToggle && railEl) {
-    railToggle.addEventListener("click", () => setRailOpen(!railEl.classList.contains("open")));
+    railToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setRailOpen(!railEl.classList.contains("open"));
+    });
     if (railClose) railClose.addEventListener("click", () => setRailOpen(false));
     if (railBackdrop) railBackdrop.addEventListener("click", () => setRailOpen(false));
-    tocLinks.forEach((l) => l.addEventListener("click", () => setRailOpen(false)));
+    tocLinks.forEach((l) => {
+      l.addEventListener("click", (e) => {
+        const href = l.getAttribute("href") || "";
+        if (href.startsWith("#")) {
+          e.preventDefault();
+          jumpToTarget(href.slice(1));
+        } else {
+          setRailOpen(false);
+        }
+      });
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && railEl.classList.contains("open")) {
+        setRailOpen(false);
+      }
+    });
   }
 
   // 五母水晶快捷跳转
   document.querySelectorAll(".mc-node").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      setRailOpen(false);
-      const targetId = btn.getAttribute("data-target");
-      const el = targetId && document.getElementById(targetId);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    });
+    btn.addEventListener("click", () => jumpToTarget(btn.getAttribute("data-target")));
   });
 
   // 勒温 SVG 区域点击跳转
   document.querySelectorAll(".lewin-layer").forEach((g) => {
-    g.addEventListener("click", () => {
-      setRailOpen(false);
-      const targetId = g.getAttribute("data-target");
-      const el = targetId && document.getElementById(targetId);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    });
+    g.addEventListener("click", () => jumpToTarget(g.getAttribute("data-target")));
   });
 
   // 中英摘要切换
@@ -482,7 +504,7 @@
     window.addEventListener("resize", resize);
 
     function tick() {
-      if (document.body.getAttribute("data-focus") !== "true") {
+      if (window.innerWidth > 960 && document.body.getAttribute("data-focus") !== "true") {
         ctx.clearRect(0, 0, w, h);
         const col = getComputedStyle(document.body).getPropertyValue("--particle-color").trim() || "rgba(150,150,150,0.15)";
         ctx.fillStyle = col;
