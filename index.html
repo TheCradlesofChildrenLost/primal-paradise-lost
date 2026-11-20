@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>原初的失乐园：《普罗玛西亚的咒缚》中的求死之神、负暗之人与拒绝同一的世界</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -34,12 +34,15 @@
     <div id="crystal-progress-fill" class="crystal-progress-fill"></div>
   </div>
 
+  <div id="rail-backdrop" class="rail-backdrop" aria-hidden="true"></div>
+
   <div class="layout">
     <!-- 左侧：勒温动态 SVG 拓扑导视 + 五母水晶进度 + 章节目录 -->
     <aside id="topo-rail" class="topo-rail" aria-label="勒温拓扑生活空间导视">
       <div class="topo-rail-header">
         <span class="topo-rail-title">Lewin Life-Space Map</span>
-        <span class="topo-rail-title">CoP · 2004</span>
+        <span class="topo-rail-title rail-year">CoP · 2004</span>
+        <button type="button" id="btn-rail-close" class="rail-close-btn" aria-label="关闭拓扑导视">✕ 关闭</button>
       </div>
 
       <!-- 动态约旦曲线 SVG 导视 -->

@@ -224,15 +224,30 @@
   }
 
   const railToggle = document.getElementById("btn-rail-toggle");
+  const railClose = document.getElementById("btn-rail-close");
+  const railBackdrop = document.getElementById("rail-backdrop");
   const railEl = document.getElementById("topo-rail");
+
+  function setRailOpen(open) {
+    if (!railEl) return;
+    railEl.classList.toggle("open", open);
+    if (railBackdrop) railBackdrop.classList.toggle("open", open);
+    if (window.innerWidth <= 960) {
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+  }
+
   if (railToggle && railEl) {
-    railToggle.addEventListener("click", () => railEl.classList.toggle("open"));
-    tocLinks.forEach((l) => l.addEventListener("click", () => railEl.classList.remove("open")));
+    railToggle.addEventListener("click", () => setRailOpen(!railEl.classList.contains("open")));
+    if (railClose) railClose.addEventListener("click", () => setRailOpen(false));
+    if (railBackdrop) railBackdrop.addEventListener("click", () => setRailOpen(false));
+    tocLinks.forEach((l) => l.addEventListener("click", () => setRailOpen(false)));
   }
 
   // 五母水晶快捷跳转
   document.querySelectorAll(".mc-node").forEach((btn) => {
     btn.addEventListener("click", () => {
+      setRailOpen(false);
       const targetId = btn.getAttribute("data-target");
       const el = targetId && document.getElementById(targetId);
       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -242,6 +257,7 @@
   // 勒温 SVG 区域点击跳转
   document.querySelectorAll(".lewin-layer").forEach((g) => {
     g.addEventListener("click", () => {
+      setRailOpen(false);
       const targetId = g.getAttribute("data-target");
       const el = targetId && document.getElementById(targetId);
       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -367,7 +383,10 @@
 
   const atlasBtn = document.getElementById("btn-open-atlas");
   if (atlasBtn && allFigures.length) {
-    atlasBtn.addEventListener("click", () => openLightbox(allFigures[0]));
+    atlasBtn.addEventListener("click", () => {
+      setRailOpen(false);
+      openLightbox(allFigures[0]);
+    });
   }
 
   const lbClose = document.getElementById("lb-close");
@@ -385,6 +404,29 @@
       currentIdx = (currentIdx + 1) % filteredFigures.length;
       renderLightbox();
     });
+  }
+
+  // 移动端灯箱左右滑动切换
+  const lbStage = document.querySelector(".lb-stage");
+  let touchStartX = 0;
+  let touchStartY = 0;
+  if (lbStage) {
+    lbStage.addEventListener("touchstart", (e) => {
+      if (e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    lbStage.addEventListener("touchend", (e) => {
+      if (!e.changedTouches.length) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        currentIdx = dx < 0
+          ? (currentIdx + 1) % filteredFigures.length
+          : (currentIdx - 1 + filteredFigures.length) % filteredFigures.length;
+        renderLightbox();
+      }
+    }, { passive: true });
   }
 
   lbFilterBtns.forEach((btn) => {

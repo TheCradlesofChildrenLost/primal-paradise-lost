@@ -1582,20 +1582,361 @@ body[data-zone="stone"] .figure-card:hover {
   margin-bottom: 2px;
 }
 
-@media (max-width: 720px) {
-  .compass-nodes {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.rail-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 44;
+  background: rgba(8, 11, 16, 0.56);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.rail-backdrop.open {
+  display: block;
+  opacity: 1;
+}
+
+.rail-close-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-size: 0.74rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   移动端与小屏深度响应式适配（平板 <= 960px / 手机 <= 720px）
+   ========================================================================== */
+@media (max-width: 960px) {
+  .rail-close-btn {
+    display: inline-flex;
+    align-items: center;
   }
+  .rail-year {
+    display: none;
+  }
+  .topo-rail {
+    width: min(84vw, 310px);
+    height: calc(100dvh - 54px);
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(28px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .topbar-left {
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .topbar-right {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .rail-toggle-btn {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+  .zone-badge {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 4px 8px;
+    gap: 6px;
+  }
+  .zone-badge span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .zone-coord {
+    display: none;
+  }
+  #btn-print {
+    display: none;
+  }
+  .tool-btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .content-wrap {
+    padding: 18px 16px calc(76px + env(safe-area-inset-bottom));
+  }
+
   .hero-banner {
-    min-height: 340px;
+    min-height: 300px;
+    margin-bottom: 18px;
+  }
+  .hero-banner::before {
+    inset: 6px;
   }
   .hero-inner {
-    padding: 32px 20px 24px;
+    padding: 28px 16px 22px;
+  }
+  .hero-eyebrow {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 4px 10px;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-size: clamp(1.26rem, 5.2vw, 1.56rem);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .hero-epigraph {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .hero-epigraph span {
+    font-size: 0.78rem;
+  }
+  .hero-meta-strip {
+    gap: 6px;
+    font-size: 0.68rem;
+  }
+  .hero-meta-strip span {
+    padding: 2px 7px;
+  }
+
+  /* 勒温五重罗盘：2 列 + 末项横跨整行，避免孤立残格 */
+  .lewin-compass {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+  .compass-formula {
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    font-size: 0.72rem;
+  }
+  .compass-nodes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .compass-node {
+    padding: 9px 6px;
+    font-size: 0.74rem;
+  }
+  .compass-node:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* 摘要、方法论与正文排版 */
+  .abstract-card,
+  .method-card {
+    padding: 18px 16px;
+    margin-bottom: 24px;
+  }
+  .abstract-tabs {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .abstract-tab {
+    padding: 6px 11px;
+    font-size: 0.78rem;
+  }
+  .abstract-panel p {
+    font-size: 0.92rem;
+    line-height: 1.82;
+    text-align: left;
+  }
+  .method-card ol {
+    padding-left: 18px;
+  }
+
+  .chapter-section {
+    margin-top: 44px;
+    scroll-margin-top: 68px;
+  }
+  .chapter-header {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  .chapter-title {
+    font-size: 1.3rem;
+    line-height: 1.38;
+  }
+  .chapter-subhead {
+    font-size: 1.06rem;
+    margin: 28px 0 12px;
+    padding-left: 10px;
+  }
+  .prose p {
+    font-size: 0.98rem;
+    line-height: 1.88;
+    text-align: left;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .prose blockquote {
+    padding: 14px 15px;
+    margin: 18px 0;
+    font-size: 0.94rem;
+    line-height: 1.78;
+  }
+
+  /* 配图与学术矢量图版（横向可滑动保持文字清晰） */
+  .figure-card {
+    padding: 9px;
+    margin: 22px 0;
+  }
+  .figure-frame img {
+    max-height: 260px;
+  }
+  .figure-topo-tag {
+    font-size: 0.64rem;
+    padding: 2px 6px;
+  }
+  .figure-caption {
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+  .svg-plate {
+    padding: 14px 12px 12px;
+    margin: 24px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .svg-plate-head {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.74rem;
+  }
+  .svg-plate-head::after {
+    content: "← 左右滑动查看完整图版 →";
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .svg-plate svg {
+    min-width: 560px;
+  }
+
+  /* 原位注释触控热区放大 */
+  .fn-trigger {
+    padding: 2px 7px;
+    font-size: 0.72rem;
+    margin: 0 3px;
+  }
+  .fn-inline-card {
+    padding: 12px 13px;
+    font-size: 0.82rem;
+  }
+  .fn-hover-tooltip {
+    display: none !important;
+  }
+
+  /* 注释与参考文献防长链接溢出 */
+  .backmatter-section {
+    margin-top: 48px;
+    font-size: 0.84rem;
+  }
+  .notes-list,
+  .ref-list {
+    padding-left: 18px;
+  }
+  .notes-list li,
+  .ref-list li {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* 边界穿越提示条底部居中收紧 */
+  .boundary-toast {
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    max-width: none;
+    padding: 8px 12px;
+    font-size: 0.74rem;
+  }
+
+  /* 移动端全屏灯箱优化（单行横向筛选 + 悬浮翻页按钮） */
+  .lightbox {
+    padding: calc(12px + env(safe-area-inset-top)) 12px calc(16px + env(safe-area-inset-bottom));
+  }
+  .lb-topbar {
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding-bottom: 10px;
+  }
+  .lb-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .lb-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .lb-filter-btn {
+    flex-shrink: 0;
+    padding: 5px 10px;
+    font-size: 0.74rem;
+  }
+  .lb-close-btn {
+    flex-shrink: 0;
+    padding: 5px 10px;
+    font-size: 0.76rem;
+  }
+  .lb-stage {
+    padding: 10px 4px;
+  }
+  .lb-stage img {
+    max-height: 54dvh;
+  }
+  .lb-nav-btn {
+    width: 36px;
+    height: 44px;
+    background: rgba(10, 12, 16, 0.62);
+    border-color: rgba(255, 255, 255, 0.35);
+    z-index: 2;
+  }
+  .lb-nav-btn.prev { left: 4px; }
+  .lb-nav-btn.next { right: 4px; }
+  .lb-footer {
+    max-height: 22dvh;
+    overflow-y: auto;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    padding: 0 4px;
+  }
+}
+
+@media (hover: none) {
+  .fn-hover-tooltip {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-backdrop img {
+    animation: none;
   }
 }
 
 @media print {
-  .lewin-compass, .boundary-toast, .hero-oceanic-rings, .hero-twilight-veil {
+  .lewin-compass, .boundary-toast, .hero-oceanic-rings, .hero-twilight-veil,
+  .rail-backdrop, .rail-close-btn {
     display: none !important;
   }
 }
