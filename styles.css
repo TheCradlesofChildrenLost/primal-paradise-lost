@@ -1,0 +1,1601 @@
+/* ==========================================================================
+   原初的失乐园：《普罗玛西亚的咒缚》知觉现象学 × 勒温拓扑阅读站
+   融合 CoP 官方专题美学（风化赭石羊皮纸 + 钢蓝晶线 + 青铜双框）
+   与 FFXI 游戏内地图格网（A-N / 1-14）及勒温边界阻抗演进
+   ========================================================================== */
+
+:root {
+  /* CoP 官网核心色票 */
+  --cop-ochre: #8b6236;
+  --cop-ochre-light: #c8a77b;
+  --cop-steel: #3b6694;
+  --cop-steel-bright: #6b98c4;
+  --cop-bronze: #9e7b4f;
+  --cop-crimson: #9e3d3d;
+  --cop-phoenix: #d97a42;
+  --cop-rose: #c47a72;
+  --cop-meadow: #5a7a67;
+
+  /* 动态场域变量（默认：序章 CoP 官网羊皮纸石色） */
+  --bg-page: #f3ede2;
+  --bg-surface: rgba(250, 246, 239, 0.92);
+  --bg-elevated: #faf6ef;
+  --text-main: #231f1b;
+  --text-muted: #5c5349;
+  --text-heading: #161310;
+  --accent: #3b6694;
+  --accent-soft: rgba(59, 102, 148, 0.12);
+  --border-color: rgba(139, 98, 54, 0.35);
+  --border-style: solid;
+  --border-width: 1px;
+  --card-radius: 3px;
+  --card-blur: 0px;
+  --card-shadow: 0 4px 20px rgba(35, 25, 15, 0.06);
+  --grid-line: rgba(139, 98, 54, 0.07);
+  --particle-color: rgba(139, 98, 54, 0.16);
+  --topbar-bg: rgba(243, 237, 226, 0.88);
+  --rail-bg: rgba(246, 241, 232, 0.94);
+
+  --font-serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", Georgia, serif;
+  --font-latin: "Cormorant Garamond", "EB Garamond", "Palatino Linotype", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --transition-zone: background-color 0.85s ease, color 0.65s ease, border-color 0.75s ease, box-shadow 0.75s ease;
+}
+
+/* ==========================================================================
+   6 大勒温拓扑空间 × CoP 区域动态明暗切换
+   ========================================================================== */
+
+/* 1. 普罗米翁：反博物学解离场（深暗灰白单色、断裂虚线边界） */
+body[data-zone="promyvion"] {
+  --bg-page: #111419;
+  --bg-surface: rgba(22, 26, 33, 0.86);
+  --bg-elevated: #1b2029;
+  --text-main: #d5dce4;
+  --text-muted: #8a95a3;
+  --text-heading: #eef3f8;
+  --accent: #74d4cc;
+  --accent-soft: rgba(116, 212, 204, 0.12);
+  --border-color: rgba(140, 165, 185, 0.28);
+  --border-style: dashed;
+  --border-width: 1px;
+  --card-radius: 2px;
+  --card-blur: 2px;
+  --card-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --grid-line: rgba(116, 212, 204, 0.045);
+  --particle-color: rgba(155, 220, 215, 0.22);
+  --topbar-bg: rgba(17, 20, 25, 0.88);
+  --rail-bg: rgba(19, 23, 29, 0.94);
+}
+
+/* 2. 塔布纳基亚地下壕：三层岩石摇篮（湿润岩青深色、厚重石质实线、天井冷光） */
+body[data-zone="tavnazia"] {
+  --bg-page: #171d22;
+  --bg-surface: rgba(27, 34, 40, 0.90);
+  --bg-elevated: #212a32;
+  --text-main: #dde3e8;
+  --text-muted: #92a1ad;
+  --text-heading: #f2f5f7;
+  --accent: #8cb2cf;
+  --accent-soft: rgba(140, 178, 207, 0.14);
+  --border-color: rgba(162, 134, 96, 0.42);
+  --border-style: solid;
+  --border-width: 1.5px;
+  --card-radius: 3px;
+  --card-blur: 0px;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.42);
+  --grid-line: rgba(140, 178, 207, 0.055);
+  --particle-color: rgba(165, 205, 230, 0.18);
+  --topbar-bg: rgba(23, 29, 34, 0.90);
+  --rail-bg: rgba(24, 31, 37, 0.95);
+}
+
+/* 3. 胸中矿石 / 帕拉达莫之丘 / 飞艇：高阻力路径空间（黑曜石＋荒原干赭＋凤凰微烬） */
+body[data-zone="stone"] {
+  --bg-page: #1c1815;
+  --bg-surface: rgba(34, 29, 24, 0.90);
+  --bg-elevated: #29221c;
+  --text-main: #e4dcd2;
+  --text-muted: #a69888;
+  --text-heading: #f7f0e6;
+  --accent: #d48c54;
+  --accent-soft: rgba(212, 140, 84, 0.15);
+  --border-color: rgba(188, 142, 88, 0.46);
+  --border-style: solid;
+  --border-width: 1.5px;
+  --card-radius: 2px;
+  --card-blur: 0px;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
+  --grid-line: rgba(200, 152, 92, 0.055);
+  --particle-color: rgba(225, 148, 86, 0.22);
+  --topbar-bg: rgba(28, 24, 21, 0.90);
+  --rail-bg: rgba(30, 25, 21, 0.95);
+}
+
+/* 4. 阿尔·塔伊尤天上之海：极端流态去分化（豁然转亮！苍白海光、边框溶解为雾面玻璃） */
+body[data-zone="altaieu"] {
+  --bg-page: #edf3f8;
+  --bg-surface: rgba(255, 255, 255, 0.62);
+  --bg-elevated: rgba(255, 255, 255, 0.82);
+  --text-main: #22303f;
+  --text-muted: #5b6f84;
+  --text-heading: #122131;
+  --accent: #3d75a8;
+  --accent-soft: rgba(61, 117, 168, 0.11);
+  --border-color: rgba(110, 155, 198, 0.18);
+  --border-style: solid;
+  --border-width: 1px;
+  --card-radius: 14px;
+  --card-blur: 14px;
+  --card-shadow: 0 12px 36px rgba(61, 117, 168, 0.09);
+  --grid-line: rgba(61, 117, 168, 0.045);
+  --particle-color: rgba(110, 168, 218, 0.28);
+  --topbar-bg: rgba(237, 243, 248, 0.82);
+  --rail-bg: rgba(242, 247, 252, 0.88);
+}
+
+/* 5. 天象之锁（《晓》）：云海冷银与黄昏绛紫交错 */
+body[data-zone="dawn"] {
+  --bg-page: #191926;
+  --bg-surface: rgba(30, 30, 46, 0.88);
+  --bg-elevated: #25253a;
+  --text-main: #e2e3ef;
+  --text-muted: #9b9eb8;
+  --text-heading: #f5f6fc;
+  --accent: #9fa8e6;
+  --accent-soft: rgba(159, 168, 230, 0.15);
+  --border-color: rgba(159, 168, 230, 0.34);
+  --border-style: solid;
+  --border-width: 1px;
+  --card-radius: 4px;
+  --card-blur: 6px;
+  --card-shadow: 0 12px 34px rgba(0, 0, 0, 0.48);
+  --grid-line: rgba(159, 168, 230, 0.05);
+  --particle-color: rgba(180, 190, 245, 0.22);
+  --topbar-bg: rgba(25, 25, 38, 0.88);
+  --rail-bg: rgba(26, 26, 40, 0.94);
+}
+
+/* 6. 吕费斯草地与终章：海风青草与玫瑰色晨光（清朗、有弹性、时间展望重开） */
+body[data-zone="meadow"] {
+  --bg-page: #f7f2ec;
+  --bg-surface: rgba(253, 250, 246, 0.94);
+  --bg-elevated: #fdfaf6;
+  --text-main: #282320;
+  --text-muted: #665b54;
+  --text-heading: #191513;
+  --accent: #b3665e;
+  --accent-soft: rgba(179, 102, 94, 0.11);
+  --border-color: rgba(179, 102, 94, 0.30);
+  --border-style: solid;
+  --border-width: 1px;
+  --card-radius: 4px;
+  --card-blur: 0px;
+  --card-shadow: 0 6px 24px rgba(120, 72, 62, 0.07);
+  --grid-line: rgba(114, 140, 122, 0.06);
+  --particle-color: rgba(204, 134, 124, 0.20);
+  --topbar-bg: rgba(247, 242, 236, 0.88);
+  --rail-bg: rgba(249, 245, 240, 0.95);
+}
+
+/* 专注阅读模式（覆盖所有场域色温，回归纯净纸感） */
+body[data-focus="true"] {
+  --bg-page: #faf8f4 !important;
+  --bg-surface: #ffffff !important;
+  --bg-elevated: #ffffff !important;
+  --text-main: #1f1e1c !important;
+  --text-muted: #5c5955 !important;
+  --text-heading: #111110 !important;
+  --accent: #3b6694 !important;
+  --accent-soft: rgba(59, 102, 148, 0.09) !important;
+  --border-color: rgba(31, 30, 28, 0.16) !important;
+  --border-style: solid !important;
+  --border-width: 1px !important;
+  --card-radius: 3px !important;
+  --card-blur: 0px !important;
+  --card-shadow: none !important;
+  --grid-line: transparent !important;
+  --topbar-bg: rgba(250, 248, 244, 0.95) !important;
+  --rail-bg: rgba(250, 248, 244, 0.98) !important;
+}
+
+body[data-focus="true"] #ambient-canvas,
+body[data-focus="true"] .map-grid-overlay {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   基础复位与全局版式
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-serif);
+  line-height: 1.95;
+  letter-spacing: 0.015em;
+  transition: var(--transition-zone);
+  overflow-x: hidden;
+}
+
+/* FFXI 游戏内地图坐标格网底层（极淡，不干扰阅读） */
+.map-grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  transition: opacity 0.6s ease;
+}
+
+#ambient-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.6s ease;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+  opacity: 0.85;
+}
+
+em {
+  font-family: var(--font-latin);
+  font-style: italic;
+}
+
+strong {
+  color: var(--text-heading);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   顶部固定导航栏（CoP 钢蓝晶线 + 五母水晶进度 + 声景注记 + 工具按钮）
+   ========================================================================== */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  z-index: 40;
+  background: var(--topbar-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  transition: var(--transition-zone);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.rail-toggle-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 4px 9px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+
+.zone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  background: var(--accent-soft);
+  color: var(--text-heading);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.zone-coord {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.ost-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ost-pill a {
+  color: var(--text-muted);
+  border-bottom-style: dotted;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tool-btn {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-size: 0.76rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tool-btn:hover,
+.tool-btn[aria-pressed="true"] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--text-heading);
+}
+
+/* 五母水晶阅读进度细条 */
+.crystal-progress-track {
+  position: fixed;
+  top: 54px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(128, 128, 128, 0.14);
+  z-index: 41;
+}
+
+.crystal-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--cop-steel), var(--accent), var(--cop-rose));
+  transition: width 0.15s linear;
+}
+
+/* ==========================================================================
+   主体双栏布局（左侧勒温拓扑导视栏 + 右侧长文精读区）
+   ========================================================================== */
+.layout {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 286px minmax(0, 1fr);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-top: 57px;
+  min-height: 100vh;
+}
+
+.topo-rail {
+  position: sticky;
+  top: 57px;
+  height: calc(100vh - 57px);
+  overflow-y: auto;
+  padding: 20px 18px 28px;
+  background: var(--rail-bg);
+  border-right: 1px var(--border-style) var(--border-color);
+  font-family: var(--font-sans);
+  transition: var(--transition-zone);
+}
+
+.topo-rail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.topo-rail-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* 勒温动态 SVG 生活空间导视卡 */
+.lewin-widget {
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-surface);
+  backdrop-filter: blur(var(--card-blur));
+  padding: 12px;
+  margin-bottom: 16px;
+  transition: var(--transition-zone);
+}
+
+.lewin-svg {
+  width: 100%;
+  height: 156px;
+  display: block;
+}
+
+.lewin-svg text {
+  font-family: var(--font-sans);
+  fill: var(--text-muted);
+  font-size: 9px;
+}
+
+.lewin-svg .region-shape {
+  transition: all 0.65s ease;
+  cursor: pointer;
+}
+
+.lewin-caption {
+  margin-top: 8px;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  border-top: 1px dotted var(--border-color);
+  padding-top: 7px;
+}
+
+.lewin-caption strong {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+/* 五块母水晶指示器 */
+.mothercrystals-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 6px 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mc-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.mc-diamond {
+  width: 9px;
+  height: 9px;
+  transform: rotate(45deg);
+  border: 1px solid var(--border-color);
+  background: transparent;
+  transition: all 0.4s ease;
+}
+
+.mc-node.lit .mc-diamond {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.mc-node.lit {
+  color: var(--text-heading);
+}
+
+/* 章节目录列表 */
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-list li {
+  margin-bottom: 3px;
+}
+
+.toc-link {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 3px;
+  border-bottom: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.toc-link:hover,
+.toc-link.active {
+  background: var(--accent-soft);
+  color: var(--text-heading);
+}
+
+.toc-link.active {
+  font-weight: 600;
+  border-left: 2px solid var(--accent);
+}
+
+.toc-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.rail-atlas-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-heading);
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rail-atlas-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* ==========================================================================
+   右侧正文阅读容器（行宽严格控制在 36-40 汉字，留白舒朗）
+   ========================================================================== */
+.content-wrap {
+  padding: 36px 56px 110px;
+  max-width: 840px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* CoP 官方专题致敬题头（风化赭石石纹 + 钢蓝晶线 + 官方主视觉） */
+.hero-banner {
+  position: relative;
+  border: 2px double var(--cop-bronze);
+  background:
+    radial-gradient(ellipse at top, rgba(162, 122, 68, 0.24), transparent 72%),
+    linear-gradient(180deg, rgba(64, 45, 25, 0.94), rgba(32, 24, 17, 0.97));
+  color: #f4ece0;
+  padding: 36px 34px 30px;
+  margin-bottom: 36px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(200, 167, 123, 0.32);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: #c8a77b;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.hero-official-logo {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto 20px;
+  border: 1px solid rgba(200, 167, 123, 0.45);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero-crystal-rule {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #3b6694 18%, #8ab7e0 50%, #3b6694 82%, transparent);
+  margin: 16px 0 22px;
+}
+
+.hero-title {
+  font-size: 1.78rem;
+  line-height: 1.42;
+  font-weight: 700;
+  text-align: center;
+  color: #faf4ea;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  margin: 0 0 10px;
+}
+
+.hero-subtitle {
+  text-align: center;
+  font-size: 0.92rem;
+  color: #d6c5ad;
+  font-family: var(--font-sans);
+  margin: 0 0 18px;
+}
+
+.hero-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  color: #c9bca8;
+}
+
+.hero-meta-strip span {
+  padding: 2px 8px;
+  border: 1px solid rgba(200, 167, 123, 0.35);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* 中英摘要切换卡 */
+.abstract-card {
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-surface);
+  backdrop-filter: blur(var(--card-blur));
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-zone);
+}
+
+.abstract-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  font-family: var(--font-sans);
+}
+
+.abstract-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.abstract-tab.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.abstract-panel {
+  display: none;
+}
+
+.abstract-panel.active {
+  display: block;
+}
+
+.abstract-panel p {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+.abstract-panel.lang-en {
+  font-family: var(--font-latin);
+  font-size: 1.03rem;
+  line-height: 1.72;
+}
+
+.keywords-line {
+  font-size: 0.85rem !important;
+  color: var(--text-muted);
+  margin-bottom: 0 !important;
+}
+
+/* 方法论卡片 */
+.method-card {
+  border-left: 3px solid var(--accent);
+  border-top: var(--border-width) var(--border-style) var(--border-color);
+  border-right: var(--border-width) var(--border-style) var(--border-color);
+  border-bottom: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-surface);
+  backdrop-filter: blur(var(--card-blur));
+  padding: 22px 26px;
+  margin-bottom: 44px;
+  font-size: 0.92rem;
+}
+
+.method-card h2 {
+  margin: 0 0 12px;
+  font-size: 1.08rem;
+  color: var(--text-heading);
+  letter-spacing: 0.04em;
+}
+
+.method-card ol {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.method-card li {
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   章节标题（融合 FFXI 游戏内区域进图提示标与 CoP 钢蓝晶线）
+   ========================================================================== */
+.chapter-section {
+  margin-top: 64px;
+  scroll-margin-top: 76px;
+}
+
+.chapter-header {
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px var(--border-style) var(--border-color);
+  position: relative;
+}
+
+.chapter-zone-tag {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.chapter-zone-tag .topo-pill {
+  font-family: var(--font-sans);
+  background: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.chapter-title {
+  font-size: 1.56rem;
+  line-height: 1.38;
+  color: var(--text-heading);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.chapter-subhead {
+  font-size: 1.18rem;
+  line-height: 1.45;
+  color: var(--text-heading);
+  margin: 38px 0 16px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+  font-weight: 700;
+}
+
+.prose p {
+  margin: 0 0 1.25em;
+  text-align: justify;
+  text-indent: 2em;
+  font-size: 1.03rem;
+}
+
+.prose blockquote {
+  margin: 24px 0;
+  padding: 16px 22px;
+  border-left: 3px solid var(--accent);
+  border-top: var(--border-width) var(--border-style) var(--border-color);
+  border-right: var(--border-width) var(--border-style) var(--border-color);
+  border-bottom: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-surface);
+  backdrop-filter: blur(var(--card-blur));
+  color: var(--text-heading);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.prose blockquote .jp-quote {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   一手实机配图卡片（青铜双细线画框 × 拓扑角标 × 一手出处直链）
+   ========================================================================== */
+.figure-card {
+  margin: 30px 0;
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-surface);
+  backdrop-filter: blur(var(--card-blur));
+  padding: 12px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-zone), transform 0.25s ease;
+}
+
+.figure-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 30px 0;
+}
+
+.figure-grid-2 .figure-card {
+  margin: 0;
+}
+
+.figure-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(158, 123, 79, 0.45);
+  background: #0d0f12;
+  cursor: zoom-in;
+}
+
+.figure-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.figure-frame:hover img {
+  transform: scale(1.025);
+}
+
+.figure-topo-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(14, 17, 22, 0.78);
+  color: #e6eef5;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border: 1px solid rgba(140, 178, 207, 0.45);
+  border-radius: 2px;
+  backdrop-filter: blur(4px);
+}
+
+.figure-caption {
+  margin-top: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.figure-caption strong {
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.figure-source {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.74rem;
+}
+
+/* ==========================================================================
+   勒温拓扑 × FFXI 建筑/机制矢量图版（非 AI 插画，学术矢量图谱）
+   ========================================================================== */
+.svg-plate {
+  margin: 32px 0;
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-surface);
+  backdrop-filter: blur(var(--card-blur));
+  padding: 18px 20px 14px;
+  box-shadow: var(--card-shadow);
+}
+
+.svg-plate-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--accent);
+  border-bottom: 1px dotted var(--border-color);
+  padding-bottom: 6px;
+}
+
+.svg-plate svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   原位非跳转注释徽标与原位展开卡（绝不跳转文末）
+   ========================================================================== */
+.fn-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 2px;
+  padding: 0 5px;
+  margin: 0 2px;
+  vertical-align: 0.12em;
+  cursor: pointer;
+  line-height: 1.45;
+  text-indent: 0;
+  transition: all 0.2s ease;
+}
+
+.fn-trigger:hover,
+.fn-trigger[aria-expanded="true"] {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.fn-inline-card {
+  display: none;
+  margin: 10px 0 16px;
+  padding: 13px 16px;
+  border-left: 3px solid var(--accent);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 3px;
+  background: var(--bg-elevated);
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--text-main);
+  text-indent: 0;
+  box-shadow: var(--card-shadow);
+}
+
+.fn-inline-card.open {
+  display: block;
+}
+
+.fn-inline-card .fn-close {
+  float: right;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+
+/* 桌面端悬停浮层预览 */
+.fn-hover-tooltip {
+  position: fixed;
+  z-index: 60;
+  max-width: 380px;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
+  color: var(--text-main);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.fn-hover-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   注释与参考文献收尾区
+   ========================================================================== */
+.backmatter-section {
+  margin-top: 68px;
+  padding-top: 28px;
+  border-top: 2px double var(--border-color);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+.backmatter-section h2 {
+  font-size: 1.24rem;
+  color: var(--text-heading);
+  margin: 0 0 18px;
+}
+
+.backmatter-section h3 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin: 26px 0 12px;
+}
+
+.notes-list, .ref-list {
+  padding-left: 20px;
+}
+
+.notes-list li, .ref-list li {
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+
+.notes-list li strong {
+  color: var(--text-heading);
+}
+
+.site-footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   全屏取景框灯箱（支持拓扑场域筛选与键盘 ← / → / Esc 翻页）
+   ========================================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(10, 12, 16, 0.94);
+  backdrop-filter: blur(8px);
+  display: none;
+  flex-direction: column;
+  padding: 18px 24px 22px;
+  color: #edf1f5;
+  font-family: var(--font-sans);
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lb-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.lb-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lb-filter-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #cfd8e3;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.lb-filter-btn.active {
+  background: #3b6694;
+  border-color: #79a7d6;
+  color: #ffffff;
+}
+
+.lb-close-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.lb-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 0;
+  padding: 16px 48px;
+}
+
+.lb-stage img {
+  max-width: 100%;
+  max-height: 68vh;
+  border: 2px double rgba(200, 167, 123, 0.65);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+  object-fit: contain;
+}
+
+.lb-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  width: 40px;
+  height: 48px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.lb-nav-btn.prev { left: 0; }
+.lb-nav-btn.next { right: 0; }
+
+.lb-footer {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #d6dde6;
+}
+
+.lb-footer .lb-meta {
+  font-size: 0.74rem;
+  color: #93b5d6;
+  margin-bottom: 4px;
+}
+
+.lb-footer a {
+  color: #8cc2f2;
+}
+
+/* ==========================================================================
+   响应式适配
+   ========================================================================== */
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .rail-toggle-btn {
+    display: inline-block;
+  }
+  .topo-rail {
+    position: fixed;
+    top: 54px;
+    left: 0;
+    bottom: 0;
+    width: 290px;
+    z-index: 45;
+    transform: translateX(-105%);
+    transition: transform 0.28s ease;
+    box-shadow: 8px 0 28px rgba(0, 0, 0, 0.35);
+  }
+  .topo-rail.open {
+    transform: translateX(0);
+  }
+  .content-wrap {
+    padding: 26px 20px 80px;
+  }
+  .ost-pill {
+    display: none;
+  }
+  .figure-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   A4 打印 PDF 样式表
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 18mm 20mm 18mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 10.5pt;
+    line-height: 1.75;
+  }
+  .topbar, .crystal-progress-track, .topo-rail, #ambient-canvas,
+  .map-grid-overlay, .lightbox, .fn-hover-tooltip, .abstract-tabs,
+  .rail-atlas-btn {
+    display: none !important;
+  }
+  .layout {
+    display: block;
+    padding-top: 0;
+  }
+  .content-wrap {
+    max-width: 100%;
+    padding: 0;
+  }
+  .abstract-panel {
+    display: block !important;
+    margin-bottom: 12pt;
+  }
+  .hero-banner {
+    background: #f5f2ec !important;
+    color: #111111 !important;
+    border: 1.5pt solid #555555;
+    box-shadow: none;
+  }
+  .hero-title, .hero-subtitle, .hero-eyebrow, .hero-meta-strip {
+    color: #111111 !important;
+    text-shadow: none;
+  }
+  .chapter-section {
+    page-break-before: auto;
+  }
+  .figure-card, .svg-plate, blockquote {
+    break-inside: avoid;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+  a {
+    color: #111111 !important;
+    border-bottom: none;
+  }
+}
+
+
+/* ==========================================================================
+   黄昏与大洋感意象首屏（Twilight × Oceanic Feeling Hero）
+   ========================================================================== */
+.hero-banner {
+  position: relative;
+  min-height: 390px;
+  padding: 0;
+  border: 1px solid rgba(182, 152, 144, 0.38);
+  background: #121722;
+  color: #f6efe9;
+  margin-bottom: 24px;
+  box-shadow: 0 18px 48px rgba(10, 14, 24, 0.34);
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(186, 210, 224, 0.22);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  filter: saturate(1.08) contrast(1.04) brightness(0.86);
+  transform: scale(1.03);
+  animation: oceanicBreath 16s ease-in-out infinite alternate;
+}
+
+@keyframes oceanicBreath {
+  0% { transform: scale(1.02) translateY(0px); filter: saturate(1.05) brightness(0.85); }
+  100% { transform: scale(1.06) translateY(-4px); filter: saturate(1.16) brightness(0.92); }
+}
+
+.hero-twilight-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 54% 26%, rgba(196, 122, 114, 0.26), transparent 56%),
+    linear-gradient(180deg,
+      rgba(22, 18, 30, 0.42) 0%,
+      rgba(48, 30, 44, 0.38) 38%,
+      rgba(13, 30, 39, 0.80) 76%,
+      rgba(10, 20, 28, 0.95) 100%);
+}
+
+.hero-oceanic-rings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 44px 36px 32px;
+}
+
+.hero-eyebrow {
+  color: rgba(216, 204, 198, 0.86);
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  font-size: 1.78rem;
+  line-height: 1.44;
+  color: #fcf7f2;
+  text-align: center;
+  text-shadow: 0 3px 18px rgba(8, 12, 20, 0.78);
+  margin: 0 0 14px;
+}
+
+.hero-crystal-rule {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(110, 162, 194, 0.75) 22%, rgba(226, 168, 156, 0.95) 50%, rgba(110, 162, 194, 0.75) 78%, transparent);
+  margin: 14px 0 18px;
+}
+
+.hero-epigraph {
+  text-align: center;
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: #f0dfd6;
+  margin: 0 0 22px;
+  text-shadow: 0 2px 10px rgba(8, 14, 22, 0.7);
+}
+
+.hero-epigraph span {
+  font-size: 0.84rem;
+  color: #b7d2de;
+  letter-spacing: 0.04em;
+}
+
+.hero-meta-strip span {
+  border-color: rgba(186, 210, 224, 0.30);
+  background: rgba(10, 20, 28, 0.48);
+  backdrop-filter: blur(4px);
+  color: #d8e4ea;
+}
+
+/* ==========================================================================
+   勒温拓扑心理学深度体验：实时场论仪表盘 + 五重罗盘 + 边界穿越反馈
+   ========================================================================== */
+.lewin-person {
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lewin-meters {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px dotted var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meter-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 34px;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.meter-row em {
+  font-style: normal;
+  font-family: var(--font-sans);
+  text-align: right;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.meter-bar {
+  height: 4px;
+  background: rgba(128, 128, 128, 0.18);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.75s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.6s ease;
+}
+
+/* 正文上方勒温 B = f(P, E) 五重场域罗盘 */
+.lewin-compass {
+  margin-bottom: 28px;
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-surface);
+  backdrop-filter: blur(var(--card-blur));
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-zone);
+}
+
+.compass-formula {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.compass-formula strong {
+  font-family: var(--font-latin);
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.compass-nodes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.compass-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 4px;
+  border: 1px var(--border-style) var(--border-color);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.compass-node em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--accent);
+}
+
+.compass-node:hover,
+.compass-node.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+/* 场域专属容器张力悬停反馈 */
+body[data-zone="altaieu"] .figure-card:hover,
+body[data-zone="altaieu"] .svg-plate:hover {
+  border-color: transparent;
+  box-shadow: 0 0 28px rgba(105, 165, 215, 0.22);
+}
+
+body[data-zone="stone"] .figure-card:hover {
+  border-color: rgba(217, 122, 66, 0.75);
+}
+
+/* 边界穿越微提示 Toast */
+.boundary-toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 55;
+  max-width: 340px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--accent);
+  border-top: 1px var(--border-style) var(--border-color);
+  border-right: 1px var(--border-style) var(--border-color);
+  border-bottom: 1px var(--border-style) var(--border-color);
+  border-radius: var(--card-radius);
+  background: var(--bg-elevated);
+  backdrop-filter: blur(10px);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.boundary-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.boundary-toast strong {
+  display: block;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+@media (max-width: 720px) {
+  .compass-nodes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-banner {
+    min-height: 340px;
+  }
+  .hero-inner {
+    padding: 32px 20px 24px;
+  }
+}
+
+@media print {
+  .lewin-compass, .boundary-toast, .hero-oceanic-rings, .hero-twilight-veil {
+    display: none !important;
+  }
+}
